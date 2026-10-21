@@ -1,0 +1,524 @@
+
+<!DOCTYPE html>
+<html lang="pt-AO">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Titan Store Sequele — acessórios, tecnologia e produtos selecionados.">
+<title>TITAN STORE | Sequele</title>
+
+<style>
+:root {
+  --bg: #0b0b0d;
+  --panel: #17171b;
+  --orange: #ff7900;
+  --gold: #ffc247;
+  --white: #f7f7f7;
+  --muted: #b9b9bf;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--white);
+  line-height: 1.6;
+}
+
+a { color: inherit; text-decoration: none; }
+
+.container {
+  width: min(1120px, 92%);
+  margin: auto;
+}
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: #0b0b0df5;
+  border-bottom: 1px solid #29292d;
+}
+
+.nav {
+  min-height: 75px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 900;
+  letter-spacing: 1px;
+}
+
+.logo span { color: var(--orange); }
+
+nav {
+  display: flex;
+  gap: 22px;
+}
+
+nav a:hover { color: var(--orange); }
+
+.hero {
+  padding: 75px 0;
+  background:
+    radial-gradient(ellipse at 80% 20%, #552a0c 0%, transparent 40%),
+    linear-gradient(135deg, #141416, #080809);
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.1fr .9fr;
+  gap: 35px;
+  align-items: center;
+}
+
+.eyebrow {
+  color: var(--gold);
+  font-weight: bold;
+  font-size: .8rem;
+  letter-spacing: 2px;
+}
+
+h1 {
+  font-size: clamp(2.5rem, 6vw, 4.7rem);
+  line-height: 1.05;
+  margin: 18px 0;
+}
+
+h1 span { color: var(--orange); }
+
+.hero p {
+  color: #d0d0d4;
+  margin-bottom: 25px;
+}
+
+.buttons {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-block;
+  padding: 12px 18px;
+  border-radius: 8px;
+  font-weight: bold;
+  text-align: center;
+  transition: .2s;
+}
+
+.btn-primary {
+  background: var(--orange);
+  color: #111;
+}
+
+.btn-primary:hover {
+  background: var(--gold);
+  transform: translateY(-2px);
+}
+
+.btn-outline {
+  border: 1px solid #666;
+}
+
+.hero-card {
+  padding: 30px;
+  border: 1px solid #70400e;
+  border-radius: 20px;
+  background: linear-gradient(145deg, #271507, #151518);
+}
+
+.hero-card .big {
+  font-size: 3rem;
+  color: var(--orange);
+  font-weight: 900;
+}
+
+.hero-card h2 { margin: 10px 0; }
+
+.hero-card p { margin: 0; }
+
+.location-tag {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 8px 12px;
+  border-radius: 20px;
+  background: #39200e;
+  color: var(--gold);
+  font-size: .85rem;
+}
+
+section { padding: 65px 0; }
+
+.section-title {
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+.section-title h2 {
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  margin-top: 8px;
+}
+
+.section-title p {
+  color: var(--muted);
+  margin-top: 8px;
+}
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.product {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--panel);
+  border: 1px solid #303035;
+  border-radius: 15px;
+  transition: .25s;
+}
+
+.product:hover {
+  transform: translateY(-5px);
+  border-color: var(--orange);
+}
+
+.product-image {
+  height: 240px;
+  padding: 15px;
+  background: #202024;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.product-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.product-info {
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.category {
+  color: var(--gold);
+  font-size: .75rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.product h3 {
+  font-size: 1.15rem;
+  margin: 7px 0;
+}
+
+.product p {
+  color: var(--muted);
+  font-size: .92rem;
+  margin-bottom: 15px;
+  flex: 1;
+}
+
+.price {
+  font-size: 1.3rem;
+  font-weight: 900;
+  margin-bottom: 15px;
+}
+
+.product .btn { width: 100%; }
+
+.note {
+  color: var(--muted);
+  text-align: center;
+  font-size: .85rem;
+  margin-top: 22px;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+}
+
+.info {
+  background: var(--panel);
+  border: 1px solid #303035;
+  border-radius: 15px;
+  padding: 25px;
+}
+
+.info h3 {
+  color: var(--gold);
+  margin-bottom: 10px;
+}
+
+.info p { color: var(--muted); }
+
+.contact-box {
+  background: linear-gradient(120deg, #301906, #151518);
+  border: 1px solid #70400e;
+  border-radius: 18px;
+  padding: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.contact-box p {
+  color: var(--muted);
+  margin-top: 8px;
+}
+
+footer {
+  border-top: 1px solid #303035;
+  padding: 25px 0;
+  text-align: center;
+  color: #999;
+  font-size: .85rem;
+}
+
+.whatsapp-float {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 20;
+  padding: 14px 18px;
+  border-radius: 30px;
+  background: #25d366;
+  color: #071b0e;
+  font-weight: bold;
+  box-shadow: 0 8px 25px #0008;
+}
+
+@media (max-width: 800px) {
+  .hero-grid, .about-grid { grid-template-columns: 1fr; }
+  .products { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .contact-box { align-items: flex-start; flex-direction: column; }
+}
+
+@media (max-width: 520px) {
+  .nav { flex-direction: column; padding: 15px 0; }
+  nav { gap: 15px; font-size: .9rem; }
+  .products { grid-template-columns: 1fr; }
+  .product-image { height: 260px; }
+  .hero { padding: 50px 0; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="container nav">
+    <a href="#inicio" class="logo">TITAN <span>STORE</span></a>
+    <nav>
+      <a href="#produtos">Produtos</a>
+      <a href="#sobre">Sobre</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section class="hero" id="inicio">
+  <div class="container hero-grid">
+    <div>
+      <span class="eyebrow">TECNOLOGIA • ACESSÓRIOS • OPORTUNIDADES</span>
+      <h1>Encontra o que precisas na <span>Titan Store.</span></h1>
+      <p>Produtos selecionados, preços claros e atendimento direto pelo WhatsApp. Estamos no Sequele, prontos para receber a tua encomenda.</p>
+
+      <div class="buttons">
+        <a href="#produtos" class="btn btn-primary">Ver produtos</a>
+        <a href="https://wa.me/244959760201" target="_blank" rel="noopener" class="btn btn-outline">Falar no WhatsApp</a>
+      </div>
+    </div>
+
+    <div class="hero-card">
+      <div class="big">TITAN</div>
+      <h2>Escolhe. Encomenda. Recebe.</h2>
+      <p>Atendimento simples e direto para clientes do Sequele e arredores.</p>
+      <span class="location-tag">📍 Sequele, Bloco 4, Prédio 21</span>
+    </div>
+  </div>
+</section>
+
+<section id="produtos">
+  <div class="container">
+    <div class="section-title">
+      <span class="eyebrow">CATÁLOGO</span>
+      <h2>Produtos em destaque</h2>
+      <p>Escolhe um produto e pede mais informações pelo WhatsApp.</p>
+    </div>
+
+    <div class="products">
+
+      <article class="product">
+        <div class="product-image">
+          <img src="imagens/relogio.jpg" alt="Relógio desportivo">
+        </div>
+        <div class="product-info">
+          <span class="category">Acessórios</span>
+          <h3>Relógio desportivo</h3>
+          <p>Estilo desportivo, visor digital ou analógico e várias cores disponíveis.</p>
+          <div class="price">6.000 Kz</div>
+          <a class="btn btn-primary" href="https://wa.me/244959760201?text=Olá!%20Tenho%20interesse%20no%20relógio%20desportivo." target="_blank" rel="noopener">Encomendar</a>
+        </div>
+      </article>
+
+      <article class="product">
+        <div class="product-image">
+          <img src="imagens/headphones.jpg" alt="Auscultadores sem fios">
+        </div>
+        <div class="product-info">
+          <span class="category">Áudio</span>
+          <h3>Headphone wireless</h3>
+          <p>Auscultadores Bluetooth com microfone e bateria de longa duração.</p>
+          <div class="price">14.500 Kz</div>
+          <a class="btn btn-primary" href="https://wa.me/244959760201?text=Olá!%20Tenho%20interesse%20nos%20headphones." target="_blank" rel="noopener">Encomendar</a>
+        </div>
+      </article>
+
+      <article class="product">
+        <div class="product-image">
+          <img src="imagens/cabo-type-c.jpg" alt="Cabo Type-C">
+        </div>
+        <div class="product-info">
+          <span class="category">Acessórios para telemóvel</span>
+          <h3>Cabo Type-C</h3>
+          <p>Cabo para carregamento e transferência de dados. Confirma a compatibilidade antes da compra.</p>
+          <div class="price">2.600 Kz</div>
+          <a class="btn btn-primary" href="https://wa.me/244959760201?text=Olá!%20Quero%20encomendar%20o%20cabo%20Type-C." target="_blank" rel="noopener">Encomendar</a>
+        </div>
+      </article>
+
+      <article class="product">
+        <div class="product-image">
+          <img src="imagens/coluna-solar.jpg" alt="Coluna solar Maxbest">
+        </div>
+        <div class="product-info">
+          <span class="category">Som portátil</span>
+          <h3>Coluna solar Maxbest MB-T95</h3>
+          <p>Coluna portátil com iluminação LED e suporte para telefone.</p>
+          <div class="price">13.500 Kz</div>
+          <a class="btn btn-primary" href="https://wa.me/244959760201?text=Olá!%20Tenho%20interesse%20na%20coluna%20solar." target="_blank" rel="noopener">Encomendar</a>
+        </div>
+      </article>
+
+      <article class="product">
+        <div class="product-image">
+          <img src="imagens/mini-coluna.jpg" alt="Mini coluna SG-606">
+        </div>
+        <div class="product-info">
+          <span class="category">Som portátil</span>
+          <h3>Mini coluna SG-606</h3>
+          <p>Coluna compacta com Bluetooth, USB e entrada para cartão SD.</p>
+          <div class="price">8.000 Kz</div>
+          <a class="btn btn-primary" href="https://wa.me/244959760201?text=Olá!%20Quero%20a%20mini%20coluna%20SG-606." target="_blank" rel="noopener">Encomendar</a>
+        </div>
+      </article>
+
+      <article class="product">
+        <div class="product-image">
+          <img src="imagens/creatina-whey.jpg" alt="Creatina e Whey Protein">
+        </div>
+        <div class="product-info">
+          <span class="category">Suplementação</span>
+          <h3>Creatina e Whey Protein</h3>
+          <p>Produtos de suplementação desportiva. Contacta-nos para confirmar disponibilidade e detalhes.</p>
+          <div class="price">Desde 14.990 Kz</div>
+          <a class="btn btn-primary" href="https://wa.me/244959760201?text=Olá!%20Quero%20saber%20sobre%20creatina%20e%20Whey%20Protein." target="_blank" rel="noopener">Consultar opções</a>
+        </div>
+      </article>
+
+      <article class="product">
+        <div class="product-image">
+          <img src="imagens/barba.jpg" alt="Kit de cuidados para barba">
+        </div>
+        <div class="product-info">
+          <span class="category">Cuidados pessoais</span>
+          <h3>Kit de cuidados para barba</h3>
+          <p>Kit com produtos para lavar, hidratar e alinhar a barba.</p>
+          <div class="price">9.000 Kz</div>
+          <a class="btn btn-primary" href="https://wa.me/244959760201?text=Olá!%20Quero%20saber%20mais%20sobre%20o%20kit%20de%20barba." target="_blank" rel="noopener">Encomendar</a>
+        </div>
+      </article>
+
+    </div>
+
+    <p class="note">Preços e disponibilidade podem mudar. Confirma os detalhes antes de pagar.</p>
+  </div>
+</section>
+
+<section id="sobre">
+  <div class="container">
+    <div class="section-title">
+      <span class="eyebrow">A LOJA</span>
+      <h2>Compra com atendimento direto</h2>
+    </div>
+
+    <div class="about-grid">
+      <div class="info">
+        <h3>Quem somos</h3>
+        <p>A <strong>Titan Store</strong> apresenta produtos e acessórios para o dia a dia. Fala connosco para confirmar stock, cores, compatibilidade e formas de entrega.</p>
+      </div>
+
+      <div class="info">
+        <h3>Onde estamos</h3>
+        <p><strong>Sequele, Bloco 4, Prédio 21</strong><br>Icolo e Bengo, Angola.</p>
+        <p style="margin-top:10px">Contacto: <strong>959 760 201</strong></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contacto">
+  <div class="container">
+    <div class="contact-box">
+      <div>
+        <h2>Queres fazer uma encomenda?</h2>
+        <p>Envia uma mensagem e confirma a disponibilidade do produto.</p>
+      </div>
+      <a class="btn btn-primary" href="https://wa.me/244959760201?text=Olá%20Titan%20Store!%20Quero%20fazer%20uma%20encomenda." target="_blank" rel="noopener">Contactar pelo WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="container">
+    © <span id="year"></span> TITAN STORE — Sequele, Angola. Todos os direitos reservados.
+  </div>
+</footer>
+
+<a class="whatsapp-float" href="https://wa.me/244959760201" target="_blank" rel="noopener">WhatsApp ↗</a>
+
+<script>
+document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
